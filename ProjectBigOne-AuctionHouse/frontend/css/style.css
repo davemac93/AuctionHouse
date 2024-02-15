@@ -545,8 +545,108 @@ section{
     top: 35%;
     margin-left: 600px;
 }
+.sellBody {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(110, 110, 110, 0.5)),url(../img/collection1.png);
+    background-size: cover;
+}
+
+.sellCarsHeader {
+    color: white;
+    padding: 50px;
+    text-align: center;
+
+}
+
+.sellCarsHeader h1{
+    margin-bottom:20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.containerSellForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerSellForm form {
+    width: 90%;
+    max-width: 600px;
+}
+
+.input-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.input-group i {
+    margin-right: 10px;
+}
+
+.containerSellForm form button i{
+    margin-left: 10px;
+}
+
+.containerSellForm form input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+    font-size: 15px;
+}
+.containerSellForm label {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    color: white;
+    cursor: text;
+    transform: 0.2s;
+}
+
+.containerSellForm button {
+    width: 100%;
+    height: 50px;
+    background-color: orange;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease-out;
+    margin-bottom: 40px;
+}
+
+.containerSellForm button:hover{
+    background-color: transparent;
+    border: 1px solid white;
+    scale: 1.0;
+    color: white;
+}
+
+.containerSellForm button:active{
+    scale: 0.93;
+}
+
+.dropDownSell {
+    display: flex;
+    justify-content: space-around;
+}
 
 
+.containerSellForm form input:focus~label,
+.containerSellForm form input:valid~label,
+.containerSellForm form textarea:focus~label,
+.containerSellForm form textarea:valid~label{
+    top: -35px;
+    font-size: 14px;
+}
 
 @media(max-width: 992px){
     .navbar .links,
@@ -571,6 +671,8 @@ section{
     }
 
 }
+
+
 
 @media(max-width: 550px){
     .dropdown_menu{
