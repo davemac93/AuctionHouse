@@ -648,6 +648,62 @@ section{
     font-size: 14px;
 }
 
+
+
+.collection_container {
+    background-color: white; /* Light gray background */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    width: calc(100vw - 40px); /* Set width to full viewport width with padding */
+    max-width: 1200px; /* Limit maximum width */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.collection_container h1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    color: #333; /* Dark gray color */
+    text-transform: uppercase;
+    font-weight: 700; /* Increased font weight for emphasis */
+    font-size: 2.5em; /* Slightly larger font size */
+    letter-spacing: 2px; /* Add letter spacing for better readability */
+    margin-bottom: 40px; /* Add some bottom margin for separation */
+}
+
+.collection_post {
+    width: 100%; /* Set width to 100% */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    overflow: hidden; /* Hide overflow content */
+    transition: transform 0.3s ease; /* Add smooth transition */
+    display: flex; /* Use flexbox to align items */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.collection_post:hover {
+    transform: translateY(-5px); /* Add a slight lift effect on hover */
+}
+
+.collection_post a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.collection_post img {
+    width: 100%; /* Make the image fill its container */
+    height: 300px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Maintain aspect ratio and fill container */
+    border-radius: 10px; /* Rounded corners */
+}
+
 @media(max-width: 992px){
     .navbar .links,
     .navbar .action_btn {
