@@ -1,88 +1,127 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const mongoose = require('mongoose');
+const morgan = require('morgan')
+const User = require('./models/user')
+const path = require('path');
+const session = require('express-session');
+const bcrypt = require('bcrypt');
+
 const saltRounds = 10;
 
+// register view engie
+app.set('view engine', 'ejs')
 
-
-app.use(cors({ origin: 'http://127.0.0.1:5500', credentials: true }));
+//middleware & static files
+app.use(morgan('dev'));
+app.set('views', path.join(__dirname, '../frontend/views'));
+app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.urlencoded( {extended: true }));
 app.use(express.json());
 
 
+const dbURL = 'mongodb+srv://dawidmac:BxsbFg0hl0WO3a5O@auctionhouse-dev-v1.1ggmddb.mongodb.net/'
 
 //Connection To MongoDV
-mongoose.connect('mongodb+srv://dawidmac:BxsbFg0hl0WO3a5O@auctionhouse-dev-v1.1ggmddb.mongodb.net/')
-  .then(() => {
-    console.log('Connected to MongoDB');
+mongoose.connect(dbURL)
+  .then((result) => {
+    app.listen(3000, () => {
+      console.log('Server is running')
+    })
   })
-  .catch((error) => {
-    console.error('MongoDB connection error:', error);
+  .catch((err) => {
+    console.log('MongoDB connection error:' + err);
   });
 
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: true,
+}));
 
-
-// Define the User schema directly in server.js
-const userSchema = new mongoose.Schema({
-  name: String,
-  lastname: String,
-  email: String,
-  password: String,
+app.get('/', (req, res) => {
+  res.render('index')
 });
 
-const User = mongoose.model('User', userSchema);
+app.get('/about', (req, res) => {
+  res.render('about')
+});
 
-//Endpoint POST REGISTER
-app.post('/user', async (req, res) => {
+app.get('/collection', (req, res) => {
+  res.render('collection')
+});
+
+app.get('/detailsBlog', (req, res) => {
+  res.render('detailsBlog')
+});
+
+app.get('/sell', (req, res) => {
+  res.render('sell')
+});
+
+app.get('/reg-log', (req, res) => {
+  res.render('reg-log')
+});
+
+app.get('/confirmationRegister', (req, res) => {
+  res.render('confirmationRegister')
+});
+
+app.post('/users', async (req, res) => {
+  const { name, lastname, email, password } = req.body;
+
   try {
-    const { name, lastname, email, password } = req.body;
-    const hashedPassword =  bcrypt.hash(password, saltRounds, function(err, hash) {
-      // Store hash in your password DB.
-  });
-    console.log(name + lastname + email + password);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+    if (!name || !lastname || !email || !password) {
+      return res.status(400).send('All fields are required');
+    }
+    
+    console.log(req.body);
 
-    const newUser = new User({
+    const user = new User({
       name,
       lastname,
       email,
       password: hashedPassword,
     });
 
-    console.log(newUser);
+    console.log(user);
 
-    await newUser.save();
-    res.send('User added successfully!');
-  } catch (error) {
-    console.error('Error adding user:', error);
-    res.status(500).send(error.message);
+    await user.save();
+    
+    res.redirect('/confirmationRegister');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error saving user');
   }
 });
 
 app.post('/login', async (req, res) => {
-  
+
+  const { email, password } = req.body;
+  console.log(req.body)
   try {
-    const { email, password } = req.body;
-
-
+    
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(401).send('Invalid email');
+      console.log('Invalid email')
+      return res.status(401).send('Invalid data');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).send('Invalid password');
+      console.log('Invalid password')
+      return res.status(401).send('Invalid data');
     }
-    console.log(user.email)
-    res.send('Login successful!');
+
+    res.redirect('/');
+    console.log(user.email);
   } catch (error) {
     console.error('Error during login:', error);
-    res.status(405).send(error.message);
+    res.status(500).send('Internal Server Error');
   }
 });
 
@@ -90,7 +129,3 @@ app.use((req, res) => {
   res.status(404).send('Not Found');
 });
 
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
