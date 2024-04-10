@@ -260,3 +260,7 @@ document.getElementById('scrollDownButtonMain').addEventListener('click', functi
         behavior: 'smooth'
     });
 });
+
+document.getElementById('moveToLogin').addEventListener('click', function() {
+    window.location.href = '/reg-log';
+});

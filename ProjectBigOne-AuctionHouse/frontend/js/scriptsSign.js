@@ -20,7 +20,7 @@ loginBtn.addEventListener('click', () => {
 });
 
 // Update this URL to match your backend URL and port
-const apiUrl = 'http://127.0.0.1:3000';
+const apiUrl = 'http://localhost:3000';
 
 // Example function to register a new user
 document.addEventListener('DOMContentLoaded', function () {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Simple validation for other fields
         if (!nameInput.value || !lastnameInput.value || !email || !password) {
-            alert('All fields are required');
+            registerInvalidElement.style.display = 'block';
             return false;
         }
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log('Sending data:', userData);
 
-        fetch(`${apiUrl}/user`, {
+        fetch(`${apiUrl}/users`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -95,14 +95,13 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(data => {
             console.log('User added successfully:', data);
-            // Handle success, if needed
         })
         .catch(error => {
             console.error('Error adding user:', error);
-            // Handle error, show error message to the user, etc.
         });
     }
 });
+
 
 document.addEventListener('DOMContentLoaded', function () {
   const loginForm = document.getElementById('loginForm');
@@ -127,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       console.log('Sending login data:', userData);
 
-      fetch(`${apiUrl}/login`, {
+      fetch('/login', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -145,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
           if (loginInvalidElement) {
             loginInvalidElement.style.display = 'none';
         }
+        window.location.href = '/';
       })
       .catch(error => {
           console.error('Login error:', error.message);

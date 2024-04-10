@@ -704,6 +704,54 @@ section{
     border-radius: 10px; /* Rounded corners */
 }
 
+.bodyConfirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    background: url('../img/ferrari.jpg') no-repeat;
+    background-position: center;
+}
+
+.container_sign {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    color: white;
+    width: 50%;
+    border-radius: 15px;
+    padding: 50px;
+}
+
+.container_sign h1{
+    font-size: 36px;
+}
+
+.container_sign p{
+    font-size: 20px;
+    margin: 50px;
+}
+
+.container_sign button {
+    padding: 20px 40px 20px 40px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.container_sign button:hover {
+    background-color: lightyellow; /* Change background color on hover */
+}
+
+.container_sign button:active {
+    transform: translateY(2px); /* Add a slight downward shift on click */
+}
+
+
 @media(max-width: 992px){
     .navbar .links,
     .navbar .action_btn {
