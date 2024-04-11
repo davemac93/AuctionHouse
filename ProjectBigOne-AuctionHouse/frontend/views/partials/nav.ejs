@@ -7,8 +7,15 @@
         <li><a href="/collection" class="mainbar">Collection</a></li>
         <li><a href="/sell" class="mainbar">Sell Your Car</a></li>
     </ul>
-    <a href="/reg-log" class="action_btn">Get Started</a>
-        <div class="toggle_btn">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-    </div>  
+    
+    <% if (loggedIn) { %>
+        <li><a href="/profile" class="mainbar"><i class="fa-solid fa-user"></i></a></li>
+        <li><a href="/logout" class="mainbar">Logout</a></li>
+    <% } else { %>
+        <a href="/reg-log" class="action_btn">Get Started</a>
+    <% } %>
+
+    <div class="toggle_btn">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</div>
