@@ -155,3 +155,33 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Add this function to check if the user is logged in
+function checkLoggedIn() {
+    fetch('/check-login')
+        .then(response => response.json())
+        .then(data => {
+            if (data.loggedIn) {
+                // User is logged in, update navbar
+                const getStartedBtn = document.querySelector('.action_btn');
+                if (getStartedBtn) {
+                    getStartedBtn.style.display = 'none'; // Hide Get Started button
+                }
+            } else {
+                // User is not logged in, update navbar
+                const profileLink = document.createElement('li');
+                profileLink.innerHTML = '<a href="/profile" class="mainbar"><i class="fa-solid fa-user"></i></a>';
+                const logoutLink = document.createElement('li');
+                logoutLink.innerHTML = '<a href="/logout" class="mainbar">Logout</a>';
+                const links = document.querySelector('.links');
+                links.appendChild(profileLink); // Add Profile link
+                links.appendChild(logoutLink); // Add Logout link
+            }
+        })
+        .catch(error => {
+            console.error('Error checking login status:', error);
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    checkLoggedIn(); // Check login status when the page loads
+});

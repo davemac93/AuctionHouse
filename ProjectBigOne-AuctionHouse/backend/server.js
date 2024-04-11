@@ -7,6 +7,7 @@ const path = require('path');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 
+
 const saltRounds = 10;
 
 // register view engie
@@ -34,13 +35,31 @@ mongoose.connect(dbURL)
   });
 
 app.use(session({
-    secret: 'your_secret_key',
-    resave: false,
-    saveUninitialized: true,
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
 }));
 
+const requireLogin = (req, res, next) => {
+  if (!req.session.userId) {
+      return res.redirect('/login'); // Redirect to login page if not logged in
+  }
+  next();
+};
+
+const checkLoggedIn = (req, res, next) => {
+  // Check if the user is logged in based on your session setup
+  const loggedIn = req.session.userId ? true : false;
+  // Pass the loggedIn variable to the response locals
+  res.locals.loggedIn = loggedIn;
+  next(); // Move to the next middleware or route handler
+};
+
+app.use(checkLoggedIn);
+
+
 app.get('/', (req, res) => {
-  res.render('index')
+    res.render('index');
 });
 
 app.get('/about', (req, res) => {
@@ -66,6 +85,8 @@ app.get('/reg-log', (req, res) => {
 app.get('/confirmationRegister', (req, res) => {
   res.render('confirmationRegister')
 });
+
+
 
 app.post('/users', async (req, res) => {
   const { name, lastname, email, password } = req.body;
@@ -116,13 +137,39 @@ app.post('/login', async (req, res) => {
       console.log('Invalid password')
       return res.status(401).send('Invalid data');
     }
-
+  
+    req.session.userId = user.id; // Store user ID in session
     res.redirect('/');
     console.log(user.email);
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).send('Internal Server Error');
   }
+});
+
+app.get('/profile', requireLogin, async (req, res) => {
+  try {
+    // Retrieve user data from the database based on the logged-in user's ID
+    const userId = req.session.userId;
+    const user = await User.findById(userId); // Assuming you have a User model
+
+    // Render the profile EJS file and pass the user data to it
+    res.render('profile', { user });
+} catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).send('Error fetching user data');
+}
+});
+
+
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/'); 
+});
+
+app.get('/check-login', (req, res) => {
+  const loggedIn = !!req.session.userId;
+  res.json({ loggedIn });
 });
 
 app.use((req, res) => {

@@ -378,7 +378,8 @@ section{
     color: red;
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 2em; 
+    font-size: 2.5em; 
+    font-weight: 600;
     background-color: transparent;
 }
 
@@ -750,7 +751,93 @@ section{
 .container_sign button:active {
     transform: translateY(2px); /* Add a slight downward shift on click */
 }
+.profileBody {
+    background: url('../img/profileCollection.jpg');
+    background-size: cover;
+    background-size: contain;
+}
 
+.profile-container {
+    display: flex;
+    height: 80vh;
+    padding: 50px 50px;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 50px 50px;
+    
+}
+
+.left-panel {
+    flex: 1;
+    border: 1px solid #ccc;
+    margin: 50px 50px;
+    background-color: white;
+    border-radius: 20px;
+    
+}
+
+.buttonUpdate{
+    text-align: center;
+}
+
+.left-panel img{
+    height: 350px;
+    width: 100%;
+    object-fit:cover;
+    border-radius: 20px;
+}
+
+.left-panel h2{
+    text-align: left;
+    padding-left: 50px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 20px;
+
+}
+
+.left-panel p{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 18px;
+
+}
+
+.left-panel p span {
+    display: inline-block;
+    width: 100px; /* Adjust the width as needed */
+    text-align: left;
+    margin-right: 400px; /* Adjust the spacing between the text and value */
+    padding-left: 50px;
+}
+
+.left-panel button{
+    margin-top: 100px;
+    font-size: 26px;
+    padding: 0px 10px;
+
+}
+
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 50px 50px;
+}
+
+.sub-panel {
+    flex: 1;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.sub-panel-bot{
+    margin-top: 50px;
+}
 
 @media(max-width: 992px){
     .navbar .links,
