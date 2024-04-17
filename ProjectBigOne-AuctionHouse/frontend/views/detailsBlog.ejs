@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Details</title>
-    <style>
-        /* Add your CSS styles here */
-    </style>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog Details</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+<body id="bodyBlog">
     <header>
-        <h1 id="carTitle"></h1>
+        <%- include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
     </header>
 
-    <div class="car-details" id="carDetails">
-        <!-- Content will be dynamically populated here -->
+    <div class="blog-details">
+            <h1 id="blogTitle"><%= blog.title %></h1>
+            <img src="../<%= blog.imagePaths[0] %>" alt="Blog Image"> <!-- Assuming you have one image -->
+            <p><%= blog.text1 %></p> <!-- Assuming you want to display text1 -->
+            <img src="../<%= blog.imagePaths[1] %>" alt="Blog Image"> <!-- Assuming you have one image -->
+            <p><%= blog.text2 %></p> <!-- Assuming you want to display text1 -->
+            <img src="../<%= blog.imagePaths[2] %>" alt="Blog Image"> <!-- Assuming you have one image -->
+            <p><%= blog.text3 %></p> <!-- Assuming you want to display text1 -->
+            <img src="../<%= blog.imagePaths[3] %>" alt="Blog Image"> <!-- Assuming you have one image -->
+            <p><%= blog.text4 %></p> <!-- Assuming you want to display text1 -->
+            <img src="../<%= blog.imagePaths[4] %>" alt="Blog Image"> <!-- Assuming you have one image -->
     </div>
-
-    <script src="./js/details.js"></script>
 </body>
 </html>
