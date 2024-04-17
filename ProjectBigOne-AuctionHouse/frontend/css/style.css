@@ -390,6 +390,12 @@ section{
     padding: 20px;
 }
 
+.blog_post a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 .blog_post img {
     width: 100%; 
     height: auto; 
@@ -418,17 +424,34 @@ section{
     background-color: transparent;
 }
 
+.about_container h2 {
+    width: 100%;
+    text-align: center;
+    color: black;
+    text-transform: uppercase;
+    font-size: 1.2em; 
+    background-color: transparent;
+}
+
+.about_container p {
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-size: 1em; 
+    background-color: transparent;
+}
+
 #aboutP {
     text-align: center;
     width: 100%;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .about_post {
     width: 100%;
     max-width: 400px;
     background-color: white;
-    padding: 20px;
+    padding: 15px;
 }
 
 .about_post img {
@@ -700,7 +723,7 @@ section{
 
 .collection_post img {
     width: 100%; /* Make the image fill its container */
-    height: 300px; /* Set a fixed height for consistency */
+    height: 450px; /* Set a fixed height for consistency */
     object-fit: cover; /* Maintain aspect ratio and fill container */
     border-radius: 10px; /* Rounded corners */
 }
@@ -781,9 +804,9 @@ section{
 }
 
 .left-panel img{
-    height: 350px;
+    height: 150px;
     width: 100%;
-    object-fit:cover;
+    object-fit: cover;
     border-radius: 20px;
 }
 
@@ -809,15 +832,26 @@ section{
     display: inline-block;
     width: 100px; /* Adjust the width as needed */
     text-align: left;
-    margin-right: 400px; /* Adjust the spacing between the text and value */
+    margin-right: 50%; /* Adjust the spacing between the text and value */
     padding-left: 50px;
 }
 
 .left-panel button{
-    margin-top: 100px;
-    font-size: 26px;
-    padding: 0px 10px;
+    margin-top: 10%;
+    color: white;
+    background: orange; /* Green background color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    text-decoration: none; /* Remove underline */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition */
 
+}
+
+.left-panel button:hover {
+    background-color: black; /* Darker green on hover */
+    transform: translateX(1px); /* Adjust the hover effect */
 }
 
 
@@ -833,11 +867,64 @@ section{
     border: 1px solid #ccc;
     background-color: white;
     border-radius: 20px;
+    text-align: center;
+}
+
+.sub-panel button {
+    margin-top: 6%;
+    color: white;
+    background: orange; /* Green background color */
+    padding: 20px 40px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    text-decoration: none; /* Remove underline */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition */
+}
+
+.sub-panel h2 {
+    margin-top: 15px;
+}
+
+.sub-panel button:hover {
+    background-color: black; /* Darker green on hover */
+    transform: translateX(1px); /* Adjust the hover effect */
 }
 
 .sub-panel-bot{
     margin-top: 50px;
 }
+
+.blog-details {
+    max-width: 1500px; /* Set maximum width */
+    margin: 0 auto; /* Center horizontally */
+    text-align: center; /* Align text within container */
+    background-color: white;
+    padding: 20px;
+}
+
+.blog-details h1 {
+    font-weight: 500;
+    margin: 30px 0;
+}
+
+.blog-details p {
+    max-width: 80%;
+    margin: 20px auto;
+}
+
+.blog-details img {
+    display: block; /* Change display property to block */
+    margin: 0 auto; /* Center the images horizontally */
+    max-width: 100%; /* Ensure images don't exceed container width */
+}
+
+#bodyBlog {
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+}
+
 
 @media(max-width: 992px){
     .navbar .links,
