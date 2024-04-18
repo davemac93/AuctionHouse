@@ -919,12 +919,106 @@ section{
     max-width: 100%; /* Ensure images don't exceed container width */
 }
 
-#bodyBlog {
-    background-color: black;
-    background-size: cover;
-    background-position: center;
+
+.heroCar {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+.carPhoto img{
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    margin-top: 5px;
+}
+
+.middelSectionCar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
+}
+
+.middelSectionCar h2{
+   font-weight: 400;
+}
+
+.carInfoButton button {
+    padding: 8px 20px;
+    justify-content: space-between;
+    margin: 0 2px;
+    border-radius: none;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid black;
+    transition: background-color 0.3s ease;
+}
+
+.carInfoButton button:hover {
+    background-color: lightgray;
+}
+
+#detailsCarP {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.buttonSectionCar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #545454;
+}
+
+.ulDetailsButton {
+    list-style-type: disc;
+    font-weight: 500;
+}
+
+.ulDetailsButton li{
+    list-style-type: disc;
+    margin-bottom: 5px;
+}
+
+.detailsPhoto {
+    display: flex;
+}
+
+.box {
+    height: 250px;
+}
+#mainPhoto{
+    width:70%
+}
+
+#box1 {
+    width:10%
+}
+
+#box2 {
+    width:10%
+}
+
+#box3 {
+    width:10%
+}
+
+.detailsPhoto img {
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.carInfoButton a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
 
 @media(max-width: 992px){
     .navbar .links,
