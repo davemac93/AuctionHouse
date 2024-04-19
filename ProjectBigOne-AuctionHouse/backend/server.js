@@ -114,6 +114,21 @@ app.get('/detailsBlog/:id', async (req, res) => {
   }
 });
 
+app.get('/detailsCar/:id', async (req, res) => {
+  
+  try {
+      // Fetch blog details from the database based on the provided ID
+      const car = await Car.findById(req.params.id).exec();
+      if (!car) {
+          return res.status(404).send('Blog not found'); // Return a 404 if the blog with the provided ID is not found
+      }
+      res.render('detailsCar', { car }); // Render the EJS file with the blog data
+  } catch (error) {
+      console.error('Error fetching blog details:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
 app.get('/sell', (req, res) => {
   res.render('sell')
 });
