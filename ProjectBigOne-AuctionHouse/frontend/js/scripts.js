@@ -97,3 +97,5 @@ document.getElementById('scrollDownButtonMain').addEventListener('click', functi
 document.getElementById('moveToLogin').addEventListener('click', function() {
     window.location.href = '/reg-log';
 });
+
+
