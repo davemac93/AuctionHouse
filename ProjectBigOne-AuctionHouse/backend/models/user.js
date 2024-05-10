@@ -6,8 +6,13 @@ const userSchema = new mongoose.Schema({
     lastname: String,
     email: String,
     password: String,
-  });
+    ownedCars: [{
+        make: String,
+        model: String,
+        // Add any additional fields you need for owned cars
+    }]
+});
 
-  const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
-  module.exports = User; 
+module.exports = User;
