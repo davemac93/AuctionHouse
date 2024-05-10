@@ -23,7 +23,7 @@
                 <h4>1963</h4>
                 <h4> 1 of 37</h4>
                 <p>The Ferrari 250 GTO is a legendary sports car, with only 37 ever produced. </p>
-                <a href="#" class="ctaa"><i class="fa-solid fa-play"> Auction Online</i></a>
+                <a href="auction" class="ctaa"><i class="fa-solid fa-play"> Auction Online</i></a>
                 <a href="collection" class="ctab">Collection</a>
             </div>
 
@@ -37,7 +37,7 @@
                     <li><a href="auction" class="mainbar">Auction</a></li>
                     <li><a href="collection" class="mainbar">Collection</a></li>
                     <li><a href="sell" class="mainbar">Sell Your Car</a></li>
-                    <li><a href="./reg-log.html" class="action_btn">Get Started</a></li>
+                    <li><a href="reg-log" class="action_btn">Get Started</a></li>
                 </ul>
             </div> 
         </section>
@@ -73,12 +73,15 @@
                     <div class="blog_container" id="blogContainer">
                         <h1>Featured Stories</h1>
                         <% blogs.forEach(blog => { %>
+                            <% function formatDate(date) { %>
+                                <% return new Date(date).toLocaleDateString(); %>
+                            <% } %>
                             <div class="blog_post">
                                 <!-- Add link to car details page with blog ID -->
                                 <a href="/detailsBlog/<%= blog._id %>">
                                     <img src="<%= blog.imagePaths[0] %>">
                                     <h3><%= blog.title %></h3>
-                                    <p><%= blog.dateOfAdding %></p>
+                                    <p>Post added: <%= formatDate(blog.dateOfAdding) %></p>
                                 </a>
                             </div>
                         <% }) %>
