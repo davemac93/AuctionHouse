@@ -52,8 +52,10 @@ section{
 .navbar .mainbar {
     border-bottom: 2px solid transparent;
 }
+
 .navbar .mainbar:hover {
     border-bottom: 2px solid white;
+    color: white;
 }
 
 .navbar .logo {
@@ -74,7 +76,7 @@ section{
 }
 
 .action_btn{
-    background-color: orange;
+    background-color: black;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
@@ -196,7 +198,6 @@ section{
     line-height: 1.4;
     font-size: 14px; 
     font-weight: 500px;
-    border-radius: 30px;
     text-transform: uppercase;
     transition: all .55s ease;
     margin: 10px;
@@ -375,7 +376,7 @@ section{
     text-align: center;
     margin-top: 20px;
     padding-top: 60px;
-    color: red;
+    color: black;
     text-transform: uppercase;
     font-weight: 400;
     font-size: 2.5em; 
@@ -416,11 +417,11 @@ section{
     width: 100%;
     text-align: center;
     margin-top: 20px;
-    padding-top: 60px;
+    padding-top: 20px;
     color: black;
     text-transform: uppercase;
     font-weight: 800;
-    font-size: 2em; 
+    font-size: 1.5em; 
     background-color: transparent;
 }
 
@@ -429,8 +430,9 @@ section{
     text-align: center;
     color: black;
     text-transform: uppercase;
-    font-size: 1.2em; 
+    font-size: 1.1em; 
     background-color: transparent;
+    padding-bottom: 10px;
 }
 
 .about_container p {
@@ -439,12 +441,14 @@ section{
     color: black;
     font-size: 1em; 
     background-color: transparent;
+    font-family: Roboto;
+    font-weight: 100;
 }
 
 #aboutP {
     text-align: center;
     width: 100%;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .about_post {
@@ -492,7 +496,7 @@ section{
 }
 
 .register-container .register_Btn{
-    background-color: orange;
+    background-color: black;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
@@ -527,10 +531,10 @@ section{
     background-image: 
     repeating-linear-gradient(
       -8deg,
-      #2052F5 0%,
-      #2052F5 60%,
-      #3D2CF5 60%,
-      #3D2CF5 100% /* determines size */
+      #5D8679 0%,
+      #5D8679 60%,
+      #3E7C59 60%,
+      #3E7C59 100% /* determines size */
     );
     color: white;
 }
@@ -548,7 +552,7 @@ section{
 
 .founder h3 {
     font-weight: 900;
-    color: orange;
+    color: black;
     letter-spacing: -4px;
 }
 
@@ -634,12 +638,11 @@ section{
 .containerSellForm button {
     width: 100%;
     height: 50px;
-    background-color: orange;
+    background-color: black;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
     outline: none;
-    border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
     cursor: pointer;
@@ -652,16 +655,14 @@ section{
     border: 1px solid white;
     scale: 1.0;
     color: white;
+    transform: translateY(-8px);
+
 }
 
 .containerSellForm button:active{
     scale: 0.93;
 }
 
-.dropDownSell {
-    display: flex;
-    justify-content: space-around;
-}
 
 
 .containerSellForm form input:focus~label,
@@ -782,20 +783,22 @@ section{
 
 .profile-container {
     display: flex;
-    height: 80vh;
-    padding: 50px 50px;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
     justify-content: center;
     border-radius: 20px;
     margin: 50px 50px;
-    
+    padding: 50px; /* Simplified padding */
 }
 
 .left-panel {
     flex: 1;
     border: 1px solid #ccc;
-    margin: 50px 50px;
+    margin: 10px 20px;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 2px;
+    min-width: 300px;
+    max-width: 600px;
+    padding-bottom: 10px;
     
 }
 
@@ -804,10 +807,11 @@ section{
 }
 
 .left-panel img{
-    height: 150px;
+    height: 250px;
     width: 100%;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 2px;
+    padding: 2px 2px;
 }
 
 .left-panel h2{
@@ -823,8 +827,8 @@ section{
 .left-panel p{
     margin-bottom: 20px;
     margin-top: 20px;
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: 200;
+    font-size: 16px;
 
 }
 
@@ -832,19 +836,18 @@ section{
     display: inline-block;
     width: 100px; /* Adjust the width as needed */
     text-align: left;
-    margin-right: 50%; /* Adjust the spacing between the text and value */
+    margin-right: 20%; /* Adjust the spacing between the text and value */
     padding-left: 50px;
 }
 
 .left-panel button{
-    margin-top: 10%;
     color: white;
-    background: orange; /* Green background color */
+    background: black; /* Green background color */
     padding: 10px 20px; /* Adjust padding as needed */
     font-size: 16px; /* Adjust font size as needed */
     text-decoration: none; /* Remove underline */
     border: none; /* Remove default button border */
-    border-radius: 5px; /* Add border radius for rounded corners */
+    border-radius: 1px; /* Add border radius for rounded corners */
     transition: transform 0.3s, background-color 0.3s; /* Smooth transition */
 
 }
@@ -859,31 +862,62 @@ section{
     display: flex;
     flex-direction: column;
     flex: 1;
-    margin: 50px 50px;
+    margin: 10px 10px;
+    min-width: 300px;
+    max-width: 600px;
+    
 }
 
 .sub-panel {
     flex: 1;
     border: 1px solid #ccc;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 2px;
     text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.sub-panel-win-cars {
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid lightgrey;
+}
+
+.sub-panel-win-cars img{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 1px;
+    padding: 2px 2px;
+}
+
+
+
+.sub-panel-bot img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1px;
+    padding: 2px 2px;
 }
 
 .sub-panel button {
     margin-top: 6%;
     color: white;
-    background: orange; /* Green background color */
+    background: black; /* Green background color */
     padding: 20px 40px; /* Adjust padding as needed */
     font-size: 16px; /* Adjust font size as needed */
     text-decoration: none; /* Remove underline */
-    border: none; /* Remove default button border */
-    border-radius: 5px; /* Add border radius for rounded corners */
+    border: none; /* Remove default button border */ /* Add border radius for rounded corners */
     transition: transform 0.3s, background-color 0.3s; /* Smooth transition */
 }
 
 .sub-panel h2 {
     margin-top: 15px;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 10px;
 }
 
 .sub-panel button:hover {
@@ -894,6 +928,33 @@ section{
 .sub-panel-bot{
     margin-top: 50px;
 }
+
+.sub-panel-bot form{
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+#add-button-owned-cars {
+    padding: 8px 24px; /* Adjust padding to make it smaller */
+    font-size: 10px; /* Adjust font size */
+    width: auto; /* Allow the button to adjust its width based on content */
+    margin-left: 40px;
+}
+
+.carOwned {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    flex-wrap: wrap;    
+
+}
+
+.carInfo {
+    display: inline-block;
+    margin: 10px; /* Adjust margin as needed */
+    padding: 10px; /* Adjust padding as needed */
+  }
+
 
 .blog-details {
     max-width: 1500px; /* Set maximum width */
@@ -929,7 +990,7 @@ section{
     width: 100%;
     height: 700px;
     object-fit: cover;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .middelSectionCar {
@@ -1019,6 +1080,105 @@ section{
     color: black;
     font-size: 1rem;
 }
+
+.heroAuction {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.AuctionPhoto img{
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    margin-top: 5px;
+}
+
+.middelSectionAuction {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
+}
+
+.middelSectionAuction h2{
+   font-weight: 400;
+}
+
+.AuctionInfoButton button {
+    padding: 8px 20px;
+    justify-content: space-between;
+    margin: 0 2px;
+    border-radius: none;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid black;
+    transition: background-color 0.3s ease;
+}
+
+.AuctionInfoButton button:hover {
+    background-color: lightgray;
+}
+
+.AuctionInfoButton a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
+
+.user_bet {
+    display: flex;
+    justify-content: space-around;
+}
+
+.add-form {
+    width: 50%;
+    margin: 0 auto; /* This centers the form horizontally */
+}
+
+.h1Add {
+    text-align: center;
+}
+
+.add-form label {
+    margin-top: 10px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+.add-form input[type="text"],
+.add-form input[type="number"],
+.add-form input[type="datetime-local"],
+.add-form input[type="file"],
+.add-form button[type="submit"] {
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.add-form button[type="submit"] {
+    background-color: black;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.add-form p {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+}
+
+
 
 @media(max-width: 992px){
     .navbar .links,

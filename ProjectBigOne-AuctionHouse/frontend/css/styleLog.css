@@ -6,13 +6,16 @@
 }
 
 body {
-    background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    background-color: white;
+    background: white;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     height: 100vh;
+}
+
+a { 
+    color: black;
 }
 
 .container_sign {
@@ -45,7 +48,7 @@ body {
 }
 
 .container_sign button {
-    background-color: orange;
+    background-color: black;
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
@@ -145,7 +148,7 @@ body {
 .toggle {
     background-color: grey;
     height: 100%;
-    background: linear-gradient(to right, #F2DD72, #BF9765);
+    background: linear-gradient(to right, #5D8679, #3E7C59);
     color: #fff;
     position: relative;
     left: -100%;
@@ -204,13 +207,20 @@ body {
 }
 
 .logo{
-    text-align: center;
+    position: static;
     text-decoration: none;
     font-weight: 700;
+    padding-bottom: 150px;   
 }
 
 .logo a {
     text-decoration: none;
-    color: white;
-    font-size: 3rem;
+    color: lightgray;
+    font-size: 2rem;
+}
+
+.logo a:hover{
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
 }
