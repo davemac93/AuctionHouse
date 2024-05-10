@@ -1,0 +1,98 @@
+<!-- profile.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <title>User Profile</title>
+</head>
+<body class="profileBody">
+    <header>
+        <%- include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
+    </header>
+    <div class="profile-container">
+        <div class="left-panel">
+            <!-- Left panel content -->
+            <div class="profile-info">
+                <img src="../img/face.jpeg" class="profile-image">
+                <h2>User Profile</h2>
+                <p><span>Name:</span> <%= user.name %></p>
+                <p><span>Lastname:</span> <%= user.lastname %></p>
+                <p><span>Email:</span> <%= user.email %></p>
+            </div>
+            <div class="buttonUpdate">
+                <button>Update</button>
+            </div>
+        </div>
+        <div class="right-panel">
+            <!-- Right panel content -->
+            <div class="sub-panel">
+                <% if(user._id.toString() === '661851d28546736546d73758') { %>
+                    <!-- Display add car and add blog post buttons for specific user -->
+                    <h2>Actions</h2>
+                    <div class="button-container">
+                        <button onclick="window.location.href='/add-car'">Add Car</button>
+                        <button onclick="window.location.href='/add-blog'">Add Blog Post</button>
+                    </div>
+                <% } else { %>
+                    <!-- Default display for other users -->
+                <h2>Cars you win</h2>
+                <% if (userCars && userCars.length > 0) { %>
+                    <% userCars.forEach(function(car) { %>
+                        <div class="sub-panel-win-cars">
+                            <div>
+                                <img src="../<%= car.imagePaths[0] %>">
+                            </div>
+                            <div>
+                                <p>Make: <%= car.make %></p>
+                                <p>Model: <%= car.model %></p>
+                            </div>
+
+                            <!-- Add more details as needed -->
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No cars won yet</p>
+                <% } %>
+                <% } %>
+                
+            </div>
+            <div class="sub-panel sub-panel-bot">
+                <% if(user._id.toString() === '661851d28546736546d73758') { %>
+                    <h2>Admin favorit car</h2>
+                    <div id="car-container"></div>
+                    <img src="../img/FerrariF40.png">
+                <% } else { %>
+                    <h2>More Details</h2>
+                    <form action="/add-owned-cars" method="POST">
+                        <label for="phone">Make:</label>
+                        <input type="text" id="make" name="make" placeholder="Enter make" required>
+
+                        <label for="address">Model:</label>
+                        <input type="text" id="model" name="model" placeholder="Enter your model" required>
+
+                        <button id='add-button-owned-cars' type="submit">Add</button>
+                    </form>
+                    <div class="carOwned">
+                        <% user.ownedCars.forEach(car => { %>
+                          <div class="carInfo">
+                            <p>Make: <%= car.make %></p>
+                            <p>Model: <%= car.model %></p>
+                          </div>
+                        <% }); %>
+                      </div>
+                <% } %>
+            </div>
+            
+            
+        </div>
+    </div>
+</body>
+</html>
