@@ -101,6 +101,7 @@ a {
 
 .container_sign.active .sign_in{
     transform: translateX(100%);
+    
 }
 
 .sign_up {

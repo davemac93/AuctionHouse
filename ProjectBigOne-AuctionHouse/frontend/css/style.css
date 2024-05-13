@@ -34,6 +34,14 @@ header {
 
 }
 
+footer {
+    position: static;
+    padding: 0 2rem;
+    background-color: black;
+    background: grey;
+
+}
+
 section{
     padding: 0 5%;
     margin-bottom: 50px;
@@ -130,6 +138,25 @@ section{
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.footerbar {
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footerbar p{
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .hero {
@@ -595,6 +622,7 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 70vh;
 }
 
 .containerSellForm form {
@@ -788,6 +816,7 @@ section{
     border-radius: 20px;
     margin: 50px 50px;
     padding: 50px; /* Simplified padding */
+    height: 100vh;
 }
 
 .left-panel {
@@ -807,7 +836,7 @@ section{
 }
 
 .left-panel img{
-    height: 250px;
+    height: 350px;
     width: 100%;
     object-fit: cover;
     border-radius: 2px;
@@ -1047,6 +1076,7 @@ section{
 
 .detailsPhoto {
     display: flex;
+    height: 80vh;
 }
 
 .box {
