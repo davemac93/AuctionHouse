@@ -1,21 +1,19 @@
-<!-- addCar.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Rubik+Mono+One&display=swap" rel="stylesheet">
-        <title>Add Car</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <title>Add Car</title>
+</head>
 <body>
     <header>
-        <%- include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
+        <% include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
     </header>
     <h1 class="h1Add">Add Car</h1>
     <% if (loggedIn && userId === '661851d28546736546d73758') { %>
@@ -38,11 +36,24 @@
         <label for="startingPrice">Starting Price:</label>
         <input type="number" id="startingPrice" name="startingPrice" required><br>
 
+        <label for="video">Video:</label>
+        <input type="file" id="video" name="video" accept="video/*" multiple required><br>
+
         <label for="images">Images:</label>
         <input type="file" id="images" name="images" accept="image/*" multiple required><br>
 
         <label for="detailsPage">Details Page:</label>
         <input type="text" id="detailsPage" name="detailsPage" required><br>
+
+        <label for="tag1">Tag 1:</label>
+        <input type="text" id="tag1" name="tag1" required><br>
+
+        <label for="tag2">Tag 2:</label>
+        <input type="text" id="tag2" name="tag2" required><br>
+
+        <label for="tag3">Tag 3:</label>
+        <input type="text" id="tag3" name="tag3" required><br>
+
 
         <button type="submit">Add Car</button>
     </form>
@@ -51,6 +62,6 @@
     <% } %>
 </body>
 <footer>
-    <%- include('./partials/footer.ejs') %>
+    <% include('./partials/footer.ejs') %>
 </footer>
 </html>

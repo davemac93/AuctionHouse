@@ -11,6 +11,8 @@ const carSchema = new Schema({
     currentAuctionPrice: { type: Number }, // Removed the default value
     userID: { type: Schema.Types.ObjectId, ref: 'User' },
     imagePaths: [{ type: String }],
+    videoPath: String, // New field for video
+    tags: [{ type: String }], // New field for array of strings (tags)
     detailsPage: String,
     onAuctionPage: Boolean,
 });

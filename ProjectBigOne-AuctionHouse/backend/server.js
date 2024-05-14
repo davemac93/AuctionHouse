@@ -160,7 +160,9 @@
       }
 
       // Assuming you want to display the details of the first car in the auction
-      const car = carsForAuction[0];
+      const car = carsForAuction[1];
+
+      // Problem z tym
 
       // Check if the auction is still ongoing
       if (!car.isAuctionOngoing()) {
@@ -215,7 +217,7 @@
     res.render('addCar', { loggedIn: res.locals.loggedIn, userId: req.session.userId });
   });
 
-  app.post('/cars', upload.array('images', 5), async (req, res) => {
+  app.post('/cars', upload.fields([{ name: 'images', maxCount: 5 }, { name: 'video', maxCount: 1 }]), async (req, res) => {
     try {
       const { userId } = req.session; // Get the userId from the session
 
@@ -225,12 +227,22 @@
       }
 
       const carData = req.body;
-      const images = req.files.map(file => {
-        // Construct the new path for the image
-        const imagePath = file.path.replace(/\\/g, '/'); // Replace backslashes with forward slashes
-        const relativePath = imagePath.replace(path.join(__dirname, '../frontend') + '/', ''); // Get relative path from frontend/uploads
-        return relativePath;
+      const images = req.files['images'].map(file => {
+        // Extract the filename from the path
+        const filename = path.basename(file.path);
+        // Prepend /uploads prefix to the filename
+        return `/uploads/${filename}`;
       });
+
+      const video = req.files['video'][0]; // Get the video file
+      const videoPath = video ? `/uploads/${path.basename(video.path)}` : null;
+
+      const tag1 = req.body.tag1;
+    const tag2 = req.body.tag2;
+      const tag3 = req.body.tag3;
+
+      // Store tags in an array
+      const tags = [tag1, tag2, tag3].filter(tag => tag); 
 
       // Create new car document
       const newCar = new Car({
@@ -243,6 +255,8 @@
         currentAuctionPrice: carData.startingPrice, // Set initial auction price to starting price
         userID: req.session.userId, // Associate the car with the logged-in user
         imagePaths: images, // Save file paths of uploaded images with modified paths
+        videoPath: videoPath,
+        tags: tags,
         detailsPage: carData.detailsPage,
         onAuctionPage: false,
       });

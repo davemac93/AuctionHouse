@@ -26,7 +26,7 @@
         <div class="middelSectionCar">
             <div class="carInfo">
                 <h2><%= car.make %> <%= car.model %></h2>
-                <p>Starting price: <%= car.startingPrice %></p>
+                <p>Starting price: <%= car.startingPrice %> $</p>
             </div>
             <div class="carInfoButton">
                 <button><a href="../reg-log">REGISTER TO BID</a></button>
@@ -38,13 +38,13 @@
         <div class="buttonSectionCar">
             <ul class="ulDetailsTop">
                 <li>Year: <%= car.year %></li>
-                <li>Mileage: <%= car.mileage %></li>
+                <li>Mileage: <%= car.mileage %> miles</li>
                 <li>Auction End at: <%= formatDate(car.auctionEnd) %></li>
             </ul>
             <ul class="ulDetailsButton">
-                <li>Text to added about the car</li>
-                <li>Text to added about the car</li>
-                <li>Text to added about the car</li>
+                <li><%= car.tags[0] %></li>
+                <li><%= car.tags[1] %></li>
+                <li><%= car.tags[2] %></li>
             </ul>
         </div>
         <div class="detailsPhoto">

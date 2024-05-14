@@ -17,42 +17,47 @@
     </header>
 
     <div class="heroAuction">
-        <div class="AuctionPhoto">
-            <img src="../<%= car.imagePaths[0] %>" alt="Blog Image"> <!-- Assuming you have one image -->
+        <div class="AuctionVideo">
+            <video loop autoplay >
+                <source src="../<%= car.videoPath %>" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <div class="middelSectionAuction">
-            <div class="auctionInfo">
+            <div class="auctionDetails">
                 <h2><%= car.make %> <%= car.model %></h2>
-                <p>Starting price: <%= car.startingPrice %> $</p>
+                <p class="startingPrice">Starting price: <%= car.startingPrice %> $</p>
                 <div id="remainingTime" data-auction-end="<%= car.auctionEnd %>"></div> <!-- Pass auctionEnd as data attribute -->
             </div>
             <div class="AuctionInfoButton">
                 <button><a href="/detailsCar/<%= car._id %>">GET MORE DETAILS</a></button>
             </div>
-        </div>
-        <div class="buttonSectionAuction">
+            <div class="currentBet">
+                <p class="bet">CURRENT BET</p>
+                <% if (users.length === 0) { %>
+                    <p class="bid">No bid yet</p>
+                <% } else { %>
+                    <% users.forEach(user => { %>
+                        <div class="user_bet">
+                            <div class="userName">
+                                <p><%= user.name %> <%= user.lastname[0] %></p>
+                            </div>
+                            <div class="Price">
+                                <p class="bid"><%= car.currentAuctionPrice %> $</p>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
             <% if (loggedIn) { %>
-                <div class="formToBet">
+                <div class="formToBet AuctionInfoButton">
                     <form action="/place-bid" method="POST">
-                        <input type="number" name="bidAmount" placeholder="Enter your bid amount" required>
+                        <input type="number" name="bidAmount" placeholder="Enter Bid" required>
                         <input type="hidden" name="carId" value="<%= car._id %>">
                         <button type="submit">Place Bid</button>
                     </form>
                 </div>
             <% } %>
-            <p>CURRENT BET</p>
-        </div>
-        <div class="auctionContainer">
-            <% users.forEach(user => { %>
-                <div class="user_bet">
-                    <div class="userName">
-                        <p><%= user.name %> <%= user.lastname %></p>
-                    </div>
-                    <div class="Price">
-                        <p><%= car.currentAuctionPrice %></p>
-                    </div>
-                </div>
-            <% }) %>
         </div>
     </div>
     <script src="../js/auction.js"></script>

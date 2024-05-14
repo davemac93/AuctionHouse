@@ -622,7 +622,7 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70vh;
+    height: 73vh;
 }
 
 .containerSellForm form {
@@ -1112,39 +1112,79 @@ section{
 }
 
 .heroAuction {
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100vw; /* Changed from vh to vw for horizontal centering */
+    height: calc(100vh - (120px + 60px));
+    flex-wrap: wrap;
+    margin-top: 25px;
 }
 
-.AuctionPhoto img{
-    width: 100%;
-    height: 700px;
+.heroAuction {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100vw;
+    height: calc(100vh - (120px + 60px));
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.AuctionVideo {
+    width: 100%; /* Ensure video container spans full width */
+    height: auto; /* Allow video height to adjust proportionally */
+}
+
+.AuctionVideo video {
+    width: 100%; /* Make video responsive to its container */
+    height: 100%; /* Ensure video fills its container */
     object-fit: cover;
-    margin-top: 5px;
+    min-width: 850px;
 }
 
 .middelSectionAuction {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid black;
+    padding-top: 100px;
+    backdrop-filter: blur(10px);
+    position: absolute; /* Change to relative */
+    width: 400px; /* Remove fixed width */
+    height: 600px;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 300px;
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 70%; /* Adjust margin-left according to your needs */
 }
 
-.middelSectionAuction h2{
-   font-weight: 400;
+.auctionDetails {
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.auctionDetails h2 {
+    font-weight: 800;
+    font-size: 2rem;
+    color: white;
+}
+
+.auctionDetails {
+    color: white;
+}
+
+.startingPrice {
+    margin-bottom: 10px;
 }
 
 .AuctionInfoButton button {
     padding: 8px 20px;
-    justify-content: space-between;
-    margin: 0 2px;
+    margin-right: 10px;
     border-radius: none;
     text-decoration: none;
     background-color: white;
     border: 1px solid black;
     transition: background-color 0.3s ease;
+    margin-bottom: 50px;
 }
 
 .AuctionInfoButton button:hover {
@@ -1157,14 +1197,43 @@ section{
     font-size: 1rem;
 }
 
+.formToBet input {
+    width: 150px;
+    height: 39px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+}
+
+.formToBet input::-webkit-outer-spin-button,
+.formToBet input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.currentBet .bid {
+    font-size: 1rem;
+}
+
+.currentBet p {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+}
+
+.currentBet .bet {
+    font-weight: 700;
+}
+
 .user_bet {
-    display: flex;
-    justify-content: space-around;
+    margin-bottom: 5px;
 }
 
 .add-form {
     width: 50%;
-    margin: 0 auto; /* This centers the form horizontally */
+    margin: 0 auto;
 }
 
 .h1Add {
