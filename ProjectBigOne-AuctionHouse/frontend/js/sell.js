@@ -1,26 +1,25 @@
 const nodemailer = require('nodemailer');
 
-async function sendEmail(name, lastName, email, phoneNumber, description, carDetails) {
+async function sendEmail(nameSell, namelastSell, email, phoneNumber, sellDescription, carDetails) {
     try {
         const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: false, // true for 465, false for other ports
+            host: 'h30.seohost.pl',
+            port: 465,
+            secure: true, // true for 465, false for other ports
             auth: {
-                user: 'macauctionhouse@gmail.com', // Your email address
+                user: 'macauctionhouse@adamski.dk', // Your email address
                 pass: 'admin2024', // Your email password
             },
         });
 
         const mailOptions = {
-            from: 'your-email@example.com', // Sender address
-            to: 'dave.mac@hotmail.com', // List of recipients
-            subject: 'New Car Selling Inquiry',
+            to: 'macauctionhouse@adamski.dk', // List of recipients
+            subject: 'I want to sell car',
             html: `
-                <p><strong>Name:</strong> ${name} ${lastName}</p>
+                <p><strong>Name:</strong> ${nameSell} ${namelastSell}</p>
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Phone Number:</strong> ${phoneNumber}</p>
-                <p><strong>Description of the car:</strong> ${description}</p>
+                <p><strong>Description of the car:</strong> ${sellDescription}</p>
                 <p><strong>Car model:</strong> ${carDetails}</p>
             `,
         };

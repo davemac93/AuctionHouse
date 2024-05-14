@@ -925,7 +925,7 @@ section{
 
 
 .sub-panel-bot img{
-    height: 200px;
+    height: 300px;
     width: 100%;
     object-fit: cover;
     border-radius: 1px;
@@ -1159,13 +1159,12 @@ section{
 
 .auctionDetails {
     margin-bottom: 20px;
-    font-weight: 700;
 }
 
 .auctionDetails h2 {
-    font-weight: 800;
-    font-size: 2rem;
+
     color: white;
+    margin-bottom: 40px;
 }
 
 .auctionDetails {
@@ -1250,7 +1249,8 @@ section{
 .add-form input[type="number"],
 .add-form input[type="datetime-local"],
 .add-form input[type="file"],
-.add-form button[type="submit"] {
+.add-form button[type="submit"],
+.add-form input[type=email] {
     background-color: #eee;
     border: none;
     margin: 8px 0;
@@ -1270,6 +1270,10 @@ section{
     cursor: pointer;
 }
 
+.carP {
+    font-weight: 500;
+}
+
 .add-form p {
     font-size: 14px;
     line-height: 20px;
@@ -1277,6 +1281,142 @@ section{
     margin: 20px 0;
 }
 
+.update-user {
+    margin-top: 100px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#removeCar {
+    height: 50px;
+    width: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: black;
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+}
+
+#removeCar:hover {
+    scale: 1.1;
+
+}
+
+#removeCar#arrow_previous {
+    left: 120px;
+    display: none;
+}
+
+#removeCar#arrow_next {
+    right: 120px;
+}
+
+.changeAuction_container {
+    height: 100vh;
+    background-color: white; /* Light gray background */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    width: calc(100vw - 40px); /* Set width to full viewport width with padding */
+    max-width: 1200px; /* Limit maximum width */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.changeAuction_container h1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    color: #333; /* Dark gray color */
+    text-transform: uppercase;
+    font-weight: 700; /* Increased font weight for emphasis */
+    font-size: 2.5em; /* Slightly larger font size */
+    letter-spacing: 2px; /* Add letter spacing for better readability */
+    margin-bottom: 40px; /* Add some bottom margin for separation */
+}
+
+.changeAuction_post {
+    width: 100%; /* Set width to 100% */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    overflow: hidden; /* Hide overflow content */
+    transition: transform 0.3s ease; /* Add smooth transition */
+    display: flex; /* Use flexbox to align items */
+    flex-direction: column; /* Stack elements vertically */
+    text-align: center;
+}
+
+.changeAuction_post input[type="radio"] + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  .changeAuction_post input[type="radio"] + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+  
+  /* Style for the label text */
+  .changeAuction_post label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: grey;
+    border: 1px solid grey;
+  }
+  
+  .changeAuction_post input[type="radio"]:checked + label {
+    color: white;
+  }
+
+.changeAuction_post:hover {
+    transform: translateY(-5px); /* Add a slight lift effect on hover */
+}
+
+.changeAuction_post a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.changeAuction_post img {
+    width: 100%; /* Make the image fill its container */
+    height: 450px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Maintain aspect ratio and fill container */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.changeAuction_post button{
+    color: white;
+    background: black; /* Green background color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    text-decoration: none; /* Remove underline */
+    border: none; /* Remove default button border */
+    border-radius: 1px; /* Add border radius for rounded corners */
+    transition: transform 0.3s, background-color 0.3s; /* Smooth transition */
+
+}
+
+.changeAuction_post button:hover {
+    background-color: black; /* Darker green on hover */
+    transform: translateX(1px); /* Adjust the hover effect */
+}
 
 
 @media(max-width: 992px){
@@ -1302,6 +1442,8 @@ section{
     }
 
 }
+
+
 
 
 

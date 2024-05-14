@@ -118,20 +118,22 @@
     }
   });
 
-  app.get('/detailsCar/:id', async (req, res) => {
-    
+  app.get('/detailsCar/:id', checkLoggedIn, async (req, res) => {
     try {
-        // Fetch blog details from the database based on the provided ID
+        // Fetch car details from the database based on the provided ID
         const car = await Car.findById(req.params.id).exec();
         if (!car) {
-            return res.status(404).send('Blog not found'); // Return a 404 if the blog with the provided ID is not found
+            return res.status(404).send('Car not found');
         }
-        res.render('detailsCar', { car }); // Render the EJS file with the blog data
+
+        // Assuming you have a logic to check if the user is registered to bid
+
+        res.render('detailsCar', { car, loggedIn: res.locals.loggedIn, userId: req.session.userId }); // Pass the car data and userRegisteredToBid to the template
     } catch (error) {
-        console.error('Error fetching blog details:', error);
+        console.error('Error fetching car details:', error);
         res.status(500).send('Internal Server Error');
     }
-  });
+});
 
   app.get('/sell', (req, res) => {
     res.render('sell')
@@ -160,7 +162,7 @@
       }
 
       // Assuming you want to display the details of the first car in the auction
-      const car = carsForAuction[1];
+      const car = carsForAuction[0];
 
       // Problem z tym
 
@@ -313,6 +315,43 @@
     }
   });
 
+  app.get('/add-car-auction', checkLoggedIn, async (req, res) => {
+
+    try {
+      // Fetch all cars from the database
+      const cars = await Car.find();
+      res.render('addCarAuction', { cars, path, loggedIn: res.locals.loggedIn, userId: req.session.userId }); // Pass the fetched cars and the path module to the collection view
+    } catch (error) {
+      console.error('Error fetching cars:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+  app.post('/updateAuctionPage', async (req, res) => {
+    const { carId } = req.body;
+  
+    try {
+        // Find the car by ID
+        const car = await Car.findById(carId);
+  
+        if (!car) {
+            return res.status(404).send('Car not found');
+        }
+  
+        // Toggle the onAuctionPage field
+        car.onAuctionPage = !car.onAuctionPage;
+  
+        // Save the updated car document
+        await car.save();
+  
+        res.redirect('/add-car-auction');
+    } catch (error) {
+        console.error('Error updating car:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
 
 
   app.post('/users', async (req, res) => {
@@ -402,13 +441,14 @@
   });
 
   app.post('/submit-form', async (req, res) => {
-    const { name, lastName, email, phoneNumber, sellDescription, make, model, year, otherCar } = req.body;
+    const { nameSell, namelastSell, email, phoneNumber, sellDescription, carDetails } = req.body;
 
     try {
       // Send email
-      await sendEmail(name, lastName, email, phoneNumber, sellDescription, `${make}, ${model}, ${year}`, otherCar);
+      await sendEmail(nameSell, namelastSell, email, phoneNumber, sellDescription, carDetails);
 
       // Redirect after email is sent
+      console.error(nameSell, namelastSell, email, phoneNumber, sellDescription, carDetails);
       res.redirect('/confirmationEmail');
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -436,6 +476,62 @@
       res.status(500).send('Internal Server Error');
     }
   });
+
+  app.post('/remove-owned-car', async (req, res) => {
+    const { carId } = req.body;
+
+    try {
+        // Remove the car from the user's ownedCars array
+        await User.findByIdAndUpdate(req.session.userId, { $pull: { ownedCars: { _id: carId } } });
+
+        // Redirect to profile page or any other desired page
+        res.redirect('/profile');
+    } catch (error) {
+        console.error('Error removing owned car:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+  app.get('/update-profile', requireLogin, async (req, res) => {
+    try {
+      // Retrieve user data from the database based on the logged-in user's ID
+      const userId = req.session.userId;
+      const user = await User.findById(userId);
+
+      // Render the profile EJS file and pass both user data, userCars, and ownedCars to it
+      res.render('updateProfileData', { user });
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      res.status(500).send('Error fetching user data');
+    }
+  });
+
+  app.post('/update-profile-next', async (req, res) => {
+    const { name, lastname, email } = req.body; // Extract form data from the request body
+
+    try {
+        // Assuming you have a User model, update the user data in the database
+        const userId = req.session.userId; // Get the logged-in user's ID from the session
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        // Update user data
+        user.name = name;
+        user.lastname = lastname;
+        user.email = email;
+
+        // Save the updated user data
+        await user.save();
+
+        res.redirect('/profile'); // Redirect to the profile page after updating the profile
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
   app.use((req, res) => {
     res.status(404).send('Not Found');

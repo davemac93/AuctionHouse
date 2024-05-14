@@ -28,28 +28,28 @@
     <div class="containerSellForm">
         <form action="/submit-form" method="POST">
             <div class="input-group">
-                <input type="text" id="nameSell" required>
-                <label for="nameSell"><i class="fa-regular fa-user"></i>First Name</label>
+                <input type="text" id="nameSell" name="nameSell" required>
+                <label for="nameSell"><i class="fa-regular fa-user" ></i>First Name</label>
             </div>
             <div class="input-group">
-                <input type="text" id="namelastSell" required>
-                <label for="namelastSell"><i class="fa-solid fa-user"></i>Last Name</label>
+                <input type="text" id="namelastSell" name="namelastSell" required>
+                <label for="namelastSell" ><i class="fa-solid fa-user" ></i>Last Name</label>
             </div>
             <div class="input-group">
-                <input type="text" id="email" required>
-                <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+                <input type="text" id="email" name="email" required>
+                <label for="email"><i class="fa-solid fa-envelope" ></i>Email</label>
             </div>
             <div class="input-group">
-                <input type="text" id="phoneNumber" required>
-                <label for="phoneNumber"><i class="fa-solid fa-phone"></i>Phone number</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" required>
+                <label for="phoneNumber"><i class="fa-solid fa-phone" ></i>Phone number</label>
             </div>
             <div class="input-group">
-                <textarea id="sellDescription" rows='4' required></textarea>
-                <label for="sellDescription"><i class="fa-solid fa-car"></i>Description of your car</label>
+                <textarea id="sellDescription" name="sellDescription" rows='4' required></textarea>
+                <label for="sellDescription"><i class="fa-solid fa-car" ></i>Description of your car</label>
             </div>
             <div class="input-group">
-                <input type="text" id='carDetails' required>
-                <label for="carDetails"><i class="fa-solid fa-car"></i>Enter car make and model</label>
+                <input type="text" id='carDetails' name="carDetails"required>
+                <label for="carDetails"><i class="fa-solid fa-car" ></i>Enter car make and model</label>
             </div>
             <button type="submit">SENT<i class="fa-solid fa-plane-up"></i></button>
         </form>

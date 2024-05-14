@@ -28,7 +28,7 @@
                 <p><span>Email:</span> <%= user.email %></p>
             </div>
             <div class="buttonUpdate">
-                <button>Update</button>
+                <button onclick="window.location.href='/update-profile'">Update</button>
             </div>
         </div>
         <div class="right-panel">
@@ -40,6 +40,9 @@
                     <div class="button-container">
                         <button onclick="window.location.href='/add-car'">Add Car</button>
                         <button onclick="window.location.href='/add-blog'">Add Blog Post</button>
+                    </div>
+                    <div class="button-container">
+                        <button onclick="window.location.href='/add-car-auction'">Add Car to Acution</button>
                     </div>
                 <% } else { %>
                     <!-- Default display for other users -->
@@ -67,10 +70,10 @@
             <div class="sub-panel sub-panel-bot">
                 <% if(user._id.toString() === '661851d28546736546d73758') { %>
                     <h2>Admin favorit car</h2>
-                    <div id="car-container"></div>
                     <img src="../img/FerrariF40.png">
+                    <p>Ferarri F40</p>
                 <% } else { %>
-                    <h2>More Details</h2>
+                    <h2>your Collection</h2>
                     <form action="/add-owned-cars" method="POST">
                         <label for="phone">Make:</label>
                         <input type="text" id="make" name="make" placeholder="Enter make" required>
@@ -81,12 +84,23 @@
                         <button id='add-button-owned-cars' type="submit">Add</button>
                     </form>
                     <div class="carOwned">
-                        <% user.ownedCars.forEach(car => { %>
-                          <div class="carInfo">
-                            <p>Make: <%= car.make %></p>
-                            <p>Model: <%= car.model %></p>
-                          </div>
-                        <% }); %>
+                        <% if (user.ownedCars && user.ownedCars.length > 0) { %>
+                            <% user.ownedCars.forEach(car => { %>
+                                <div class="carInfo">
+                                    <p class="carP">Make: <p><%= car.make %></p></p>
+                                    <p class="carP">Model: <p><%= car.model %></p></p>
+                                    <!-- Add button to remove car -->
+                                    <form action="/remove-owned-car" method="POST">
+                                        <input type="hidden" name="carId" value="<%= car._id %>">
+                                        <div>
+                                            <button type="submit" id="removeCar"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            <% }); %>
+                        <% } else { %>
+                            <p>No cars owned yet</p>
+                        <% } %>
                       </div>
                 <% } %>
             </div>

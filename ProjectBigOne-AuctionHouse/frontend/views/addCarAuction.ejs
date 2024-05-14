@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <title>AddCarToAuction</title>
+</head>
+<body>
+    <header>
+        <%- include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
+    </header>
+
+    <div class="changeAuction_container">
+        <form action="/updateAuctionPage" method="POST">
+            <% cars.forEach(car => { %>
+                <div class="changeAuction_post">
+                    <a href="/detailsCar/<%= car._id %>">
+                        <img src="<%= car.imagePaths[0] %>" alt="<%= car.make %> <%= car.model %>">
+                        <h3><%= car.make %> <%= car.model %></h3>
+                    </a>
+                    <label>
+                        <input type="radio" name="carId" value="<%= car._id %>" <% if(car.onAuctionPage) { %> checked <% } %>>
+                        On Auction
+                    </label>
+                    <label>
+                        <input type="radio" name="carId" value="<%= car._id %>" <% if(!car.onAuctionPage) { %> checked <% } %>>
+                        Is Not On Auction
+                    </label>
+                    <button type="submit">Update</button>
+                </div>
+            <% }) %>
+        </form>
+    </div>
+    <script src="../js/collection.js"></script>
+</body>
+<footer>
+    <%- include('./partials/footer.ejs') %>
+</footer>
+</html>

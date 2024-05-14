@@ -29,7 +29,11 @@
                 <p>Starting price: <%= car.startingPrice %> $</p>
             </div>
             <div class="carInfoButton">
-                <button><a href="../reg-log">REGISTER TO BID</a></button>
+                <% if (loggedIn) { %>
+                    <button><a href="../auction">AUCTION</a></button>
+                <% } else { %>
+                    <button><a href="../reg-log">REGISTER TO BID</a></button>
+                <% } %>
                 <button><a href="../collection">AVAILABLE LOTS</a></button>
             </div>
          
