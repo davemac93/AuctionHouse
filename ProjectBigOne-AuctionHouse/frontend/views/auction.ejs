@@ -50,7 +50,7 @@
                     <% }) %>
                 <% } %>
             </div>
-            <% if (loggedIn && userId === '661851d28546736546d73758') { %>
+            <% if (loggedIn && userId !== '661851d28546736546d73758') { %>
                 <div class="formToBet AuctionInfoButton">
                     <form action="/place-bid" method="POST">
                         <input type="number" name="bidAmount" placeholder="Enter Bid" required>
