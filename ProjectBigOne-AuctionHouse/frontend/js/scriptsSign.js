@@ -19,7 +19,7 @@
     });
 
     // Update this URL to match your backend URL and port
-    const apiUrl = 'http://localhost:8000';
+    const apiUrl = 'http://localhost:3000';
 
     // Example function to register a new user
     document.addEventListener('DOMContentLoaded', function () {
@@ -61,9 +61,8 @@
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
+                    throw new Error('Invalid email or password');
                 }
-                
                 return response.text();
             })
             .then(data => {

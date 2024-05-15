@@ -19,39 +19,14 @@ toggleBtn.onclick = toggleDropDown;
 const initSlider = () => {
     const imageList = document.querySelector('.slider_wrapper .image_list');
     const slideButtons = document.querySelectorAll('.slider_wrapper .arrows');
-    const sliderScrollbar = document.querySelector('.container .slider_scrollbar');
-    const scrollBarThumb = document.querySelector('.scrollbar_thumb');
+
 
     const handelResize = () => {
         maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
-        updateScrollThumbPosition();
     };
 
     window.addEventListener('resize', handelResize);
 
-    scrollBarThumb.addEventListener('mousedown', (e) => {
-        const startX = e.clientX;
-        const thumbPosition = scrollBarThumb.offsetLeft;
-        const maxThumbPostion = sliderScrollbar.getBoundingClientRect().width - scrollBarThumb.offsetWidth;
-
-        const handelMouseMove = (e) => {
-            const deltaX = e.clientX - startX;
-            const newThumbPosition = thumbPosition + deltaX;
-
-            const boundedPosition = Math.max(0, Math.min(maxThumbPostion, newThumbPosition));
-            const scrollPosition = (boundedPosition / maxThumbPostion) * maxScrollLeft;
-
-            scrollBarThumb.style.left = `${boundedPosition}px`;
-            imageList.scrollLeft = scrollPosition;
-        }
-
-        const handelMouseUp = () => {
-            document.removeEventListener('mousemove', handelMouseMove);
-            document.removeEventListener('mouseup', handelMouseUp);
-        }
-        document.addEventListener('mousemove', handelMouseMove);
-        document.addEventListener('mouseup', handelMouseUp);
-    });
 
     slideButtons.forEach(button => {
         button.addEventListener("click", () => {
@@ -66,15 +41,10 @@ const initSlider = () => {
         slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? 'none' : 'block';
     }
 
-    const updateScrollThumbPosition = () => {
-        const scrollPosition = imageList.scrollLeft;
-        const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollBarThumb.offsetWidth);
-        scrollBarThumb.style.left = `${thumbPosition}px`;
-    }
+
 
     imageList.addEventListener('scroll', () => {
         handelSlideButtons();
-        updateScrollThumbPosition();
     })
 }
 

@@ -22,8 +22,8 @@ a {
 }
 
 a:hover {
-    color: grey;
-    
+    color: white;
+    scale: 1.05;
 }
 
 header {
@@ -154,11 +154,6 @@ section{
     color: white;
 }
 
-.navbar .logo {
-    font-size: 1rem;
-    font-weight: 700;
-}
-
 .hero {
     height: 100vh;
     width: 100%;
@@ -168,7 +163,8 @@ section{
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 1rem;
-    background: linear-gradient(245.59deg, grey 10%, black 60%, grey 800%);
+    background: black;
+    /* background: linear-gradient(245.59deg, grey 10%, black 60%, grey 800%); */
 
 }
 
@@ -188,6 +184,7 @@ section{
     line-height: 1;
     color: white;
     margin: 0 0 45px;
+    font-weight: 200;
 }
 
 .hero_text h2{
@@ -195,6 +192,7 @@ section{
     font-size: 35px;
     color: white;
     margin: 0 0 15px;
+    font-weight: 300;
 }
 
 .hero_text h4{
@@ -316,34 +314,6 @@ section{
     align-items: center;
 }
 
-.slider_scrollbar .scrollbar_track {
-    height: 2px;
-    width: 100%;
-    background: #ccc;
-    position: relative;
-    border-radius: 4px;
-}
-
-.slider_scrollbar:hover .scrollbar_track{
-    height: 4px;
-}
-
-.slider_scrollbar .scrollbar_thumb{
-    position: absolute;
-    height: 100%;
-    width: 50%;
-    background: grey;
-    border-radius: inherit;
-    cursor: grab;
-}
-.slider_scrollbar .scrollbar_track:active{
-    cursor: grabbing;
-    height: 8px;
-    top: -2px;
-}
-
-
-
 .slider_scrollbar .scrollbar_thumb::after{
     content: "";
     position: absolute;
@@ -402,7 +372,6 @@ section{
     width: 100%;
     text-align: center;
     margin-top: 20px;
-    padding-top: 60px;
     color: black;
     text-transform: uppercase;
     font-weight: 400;
@@ -477,6 +446,7 @@ section{
     text-align: center;
     width: 100%;
     font-size: 17px;
+    font-weight: 300;
 }
 
 .about_post {
@@ -485,6 +455,12 @@ section{
     background-color: white;
     padding: 15px;
 }
+
+.about_post p {
+    font-weight: 300;
+
+}
+
 
 .about_post img {
     width: 100%; 
@@ -1052,7 +1028,7 @@ section{
 }
 
 #detailsCarP {
-    text-align: center;
+    text-align: left;
     font-size: 2rem;
     margin-bottom: 10px;
 }
@@ -1154,7 +1130,7 @@ section{
     display: block;
     padding-bottom: 300px;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 4%;
     margin-left: 70%; /* Adjust margin-left according to your needs */
 }
 
