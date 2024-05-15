@@ -9,7 +9,7 @@
   const nodemailer = require('nodemailer');
 
   // Importing sendEmail function
-  const sendEmail = require('../frontend/js/sell.js');
+  const sendEmail = require('../backend/js/sell.js');
 
   //models
   const Car = require('./models/cars'); 
