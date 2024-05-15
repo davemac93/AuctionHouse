@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <% include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
+        <%- include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
     </header>
     <h1 class="h1Add">Add Car</h1>
     <% if (loggedIn && userId === '661851d28546736546d73758') { %>
@@ -62,6 +62,6 @@
     <% } %>
 </body>
 <footer>
-    <% include('./partials/footer.ejs') %>
+    <%- include('./partials/footer.ejs') %>
 </footer>
 </html>

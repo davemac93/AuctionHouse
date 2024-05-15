@@ -11,12 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <title>Collection</title>
 </head>
-<body>
+<body >
     <header>
         <%- include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
     </header>
 
-    <div class="collection_container" id="collectionContainer">
+    <div class="collection_container">
         <h1>Collection</h1>
             <% cars.forEach(car => { %>
                 <div class="collection_post">
