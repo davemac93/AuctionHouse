@@ -45,7 +45,7 @@
   //Connection To MongoDV
   mongoose.connect(dbURL)
     .then((result) => {
-      app.listen(8000, () => {
+      app.listen(3000, () => {
         console.log('Server is running')
       })
     })
@@ -151,7 +151,7 @@
     res.render('confirmationEmail')
   });
 
-  app.get('/auction', async (req, res) => {
+  app.get('/auction', checkLoggedIn, async (req, res) => {
     try {
       // Fetch cars for auction where onAuctionPage is true
       const carsForAuction = await Car.find({ onAuctionPage: true });
@@ -172,12 +172,12 @@
       }
 
       // Fetch users who placed bids on the current car excluding the admin user
-      const users = await User.find({ _id: { $ne: '661851d28546736546d73758', $in: car.userID } });
+      const users = await User.find({ _id: { $ne: '6644c13665bbcbdd9c7c3134', $in: car.userID } });
 
-      res.render('auction', { car, users }); // Render the auction view with the fetched car and users
+      res.render('auction', { userId: req.session.userId, car, users, loggedIn: res.locals.loggedIn});
     } catch (error) {
-      console.error('Error fetching cars for auction:', error);
-      res.status(500).send('Internal Server Error');
+        console.error('Error fetching cars for auction:', error);
+        res.status(500).send('Internal Server Error');
     }
   });
 
@@ -224,7 +224,7 @@
       const { userId } = req.session; // Get the userId from the session
 
       // Check if the user is authorized to add cars (assuming the admin user has a specific _id)
-      if (userId !== '661851d28546736546d73758') {
+      if (userId !== '6644c13665bbcbdd9c7c3134') {
         return res.status(403).send('Forbidden'); // Return Forbidden status if not authorized
       }
 
@@ -282,7 +282,7 @@
       const { userId } = req.session; // Get the userId from the session
 
       // Check if the user is authorized to add cars (assuming the admin user has a specific _id)
-      if (userId !== '661851d28546736546d73758') {
+      if (userId !== '6644c13665bbcbdd9c7c3134') {
         return res.status(403).send('Forbidden'); // Return Forbidden status if not authorized
       }
 
