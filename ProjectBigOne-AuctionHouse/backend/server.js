@@ -277,7 +277,7 @@
     res.render('addBlog', { loggedIn: res.locals.loggedIn, userId: req.session.userId });
   });
 
-  app.post('/blogs', upload.array('images', 5), async (req, res) => {
+  app.post('/blogs', upload.fields([{ name: 'images', maxCount: 5 }]), async (req, res) => {
     try {
       const { userId } = req.session; // Get the userId from the session
 
@@ -287,11 +287,11 @@
       }
 
       const blogData = req.body;
-      const images = req.files.map(file => {
-        // Construct the new path for the image
-        const imagePath = file.path.replace(/\\/g, '/'); // Replace backslashes with forward slashes
-        const relativePath = imagePath.replace(path.join(__dirname, '../frontend') + '/', ''); // Get relative path from frontend/uploads
-        return relativePath;
+      const images = req.files['images'].map(file => {
+        // Extract the filename from the path
+        const filename = path.basename(file.path);
+        // Prepend /uploads prefix to the filename
+        return `/uploads/${filename}`;
       });
 
       // Create new car document
