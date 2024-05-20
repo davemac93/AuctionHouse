@@ -18,18 +18,18 @@ const updateRemainingTime = () => {
     }
 };
 
-setInterval(function() {
-    // Fetch updated bid data from the server
-    fetch('/getUpdatedBidData') // Replace '/getUpdatedBidData' with your actual endpoint
-        .then(response => response.json())
-        .then(data => {
-            // Update the current bid price
-            document.getElementById('currentBid').innerText = data.currentAuctionPrice + ' $';
-        })
-        .catch(error => {
-            console.error('Error fetching bid data:', error);
-        });
-}, 500); // Update every 0.5 seconds (500 milliseconds)
+function toggleMute() {
+    var video = document.getElementById('carVideo');
+    var muteButton = document.getElementById('muteButton');
+
+    if (video.muted) {
+        video.muted = false;
+        muteButton.innerHTML = '<i class="fa-solid fa-volume-low"></i>';
+    } else {
+        video.muted = true;
+        muteButton.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+    }
+}
 
 // Initial update
 updateRemainingTime();

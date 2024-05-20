@@ -1,4 +1,6 @@
   const express = require('express');
+  const http = require('http');
+  const socketIo = require('socket.io');
   const app = express();
   const mongoose = require('mongoose');
   const morgan = require('morgan')
@@ -7,6 +9,8 @@
   const bcrypt = require('bcrypt');
   const multer = require('multer');
   const nodemailer = require('nodemailer');
+
+  
 
   // Importing sendEmail function
   const sendEmail = require('../backend/js/sell.js');

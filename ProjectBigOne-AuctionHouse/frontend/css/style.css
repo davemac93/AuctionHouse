@@ -23,7 +23,6 @@ a {
 
 a:hover {
     color: white;
-    scale: 1.05;
 }
 
 header {
@@ -599,7 +598,8 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 73vh;
+    height: 100%;
+    min-height: 865px;
 }
 
 .containerSellForm form {
@@ -990,6 +990,8 @@ section{
 .heroCar {
     max-width: 1200px;
     margin: 0 auto;
+    height: 100%;
+    min-height: 1500px;
 }
 
 .carPhoto img{
@@ -1053,11 +1055,13 @@ section{
 
 .detailsPhoto {
     display: flex;
-    height: 80vh;
+    height: 100%;
 }
 
 .box {
-    height: 250px;
+    height: auto;
+    min-height: 450px;
+    margin-bottom: 30px;
 }
 #mainPhoto{
     width:70%
@@ -1093,7 +1097,7 @@ section{
     justify-content: center;
     text-align: center;
     width: 100vw; /* Changed from vh to vw for horizontal centering */
-    height: calc(100vh - (120px + 60px));
+    height: 100%;
     flex-wrap: wrap;
     margin-top: 25px;
 }
@@ -1103,9 +1107,9 @@ section{
     justify-content: center;
     text-align: center;
     width: 100vw;
-    height: calc(100vh - (120px + 60px));
     flex-wrap: wrap;
     margin-bottom: 25px;
+    min-height: 1060px;
 }
 
 .AuctionVideo {
@@ -1121,17 +1125,16 @@ section{
 }
 
 .middelSectionAuction {
-    padding-top: 100px;
+    position: absolute;
+    top: 300px;
+    right: 20px;
     backdrop-filter: blur(10px);
-    position: absolute; /* Change to relative */
     width: 400px; /* Remove fixed width */
     height: 600px;
     margin: 0 auto;
     display: block;
     padding-bottom: 300px;
     text-align: center;
-    margin-top: 4%;
-    margin-left: 70%; /* Adjust margin-left according to your needs */
 }
 
 .auctionDetails {
@@ -1287,15 +1290,6 @@ section{
     right: 120px;
 }
 
-#removeCar {
-    left: 120px;
-    display: none;
-}
-
-#removeCar {
-    right: 120px;
-}
-
 .changeAuction_container {
     background-color: white; /* Light gray background */
     display: flex;
@@ -1419,6 +1413,12 @@ section{
     background-image: url("../img/garage.jpg");
     object-fit: cover;
     width: 100%;
+}
+
+.muteButton {
+    position: absolute;
+    right: 120px; 
+    top: 120px;
 }
 
 @media(max-width: 992px){
