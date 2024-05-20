@@ -15,7 +15,7 @@
     <header>
         <%- include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
     </header>
-
+    <% if (loggedIn && userId === '6644c13665bbcbdd9c7c3134') { %>
     <div class="changeAuction_container">
         <form action="/updateAuctionPage" method="POST">
             <% cars.forEach(car => { %>
@@ -37,6 +37,9 @@
             <% }) %>
         </form>
     </div>
+    <% } else { %>
+        <p>You are not authorized to change which care need to be on auction</p>
+        <% } %>
     <script src="../js/collection.js"></script>
 </body>
 <footer>

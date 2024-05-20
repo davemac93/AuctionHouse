@@ -20,15 +20,14 @@
         <h1>Collection</h1>
             <% cars.forEach(car => { %>
                 <div class="collection_post">
-                    <a href="/detailsCar/<%= car._id %>"> <!-- Add link to car details page -->
+                    <a href="/detailsCar/<%= car._id %>">
                         <img src="<%= car.imagePaths[0] %>" alt="<%= car.make %> <%= car.model %>">
-                        <!-- Use the basename function to get just the filename from the full path -->
                         <h3><%= car.make %> <%= car.model %></h3>
                         <ul>
                             <li>Year: <%= car.year %></li>
                             <li>Mileage: <%= car.mileage %></li>
                             <div class="remainingTime" data-auction-end="<%= car.auctionEnd %>"></div>
-                            <li>Starting Auction Price: $<%= car.startingPrice %></li>
+                            <li>Auction Starting Price: $<%= car.startingPrice %></li>
                         </ul>
                     </a>
                 </div>

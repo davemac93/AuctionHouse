@@ -23,8 +23,6 @@ const updateRemainingTime = () => {
     }
 };
 
-// Initial update
 updateRemainingTime();
 
-// Update remaining time every second
 setInterval(updateRemainingTime, 1000);

@@ -15,8 +15,9 @@
     <header>
         <%- include('./partials/nav.ejs', { loggedIn: loggedIn }) %>
     </header>
+    <div class="addBody">
     <h1 class="h1Add">Add Car</h1>
-    <% if (loggedIn && userId === '661851d28546736546d73758') { %>
+    <% if (loggedIn && userId === '6644c13665bbcbdd9c7c3134') { %>
     <form action="/cars" method="POST" enctype="multipart/form-data" class="add-form">
         <label for="make">Make:</label>
         <input type="text" id="make" name="make" required><br>
@@ -60,6 +61,7 @@
     <% } else { %>
     <p>You are not authorized to add cars.</p>
     <% } %>
+    </div>
 </body>
 <footer>
     <%- include('./partials/footer.ejs') %>

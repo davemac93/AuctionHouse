@@ -18,16 +18,13 @@
         }
     });
 
-    // Update this URL to match your backend URL and port
-    const apiUrl = 'http://localhost:3000';
 
-    // Example function to register a new user
     document.addEventListener('DOMContentLoaded', function () {
         const registerForm = document.getElementById('registerForm');
         const registerSubmitButton = document.getElementById('registerSubmit');
 
         registerSubmitButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault(); 
             registerUser();
         });
 
@@ -89,7 +86,7 @@
         const loginSubmitButton = document.getElementById('loginSubmit');
 
         loginSubmitButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault();
             loginUser();
         });
 
@@ -102,7 +99,6 @@
 
             console.log('Sending login data:', userData);
 
-            // Custom validation
             if (!userData.email || !userData.password) {
                 console.error('Please fill out all fields');
                 if (loginInvalidElement) {
@@ -140,16 +136,14 @@
         }
     });
 
-    // Add this function to check if the user is logged in
     function checkLoggedIn() {
         fetch('/check-login')
             .then(response => response.json())
             .then(data => {
                 if (data.loggedIn) {
-                    // User is logged in, update navbar
                     const getStartedBtn = document.querySelector('.action_btn');
                     if (getStartedBtn) {
-                        getStartedBtn.style.display = 'none'; // Hide Get Started button
+                        getStartedBtn.style.display = 'none'; 
                     }
                 } else {
                     // User is not logged in, update navbar
@@ -158,8 +152,8 @@
                     const logoutLink = document.createElement('li');
                     logoutLink.innerHTML = '<a href="/logout" class="mainbar">Logout</a>';
                     const links = document.querySelector('.links');
-                    links.appendChild(profileLink); // Add Profile link
-                    links.appendChild(logoutLink); // Add Logout link
+                    links.appendChild(profileLink); 
+                    links.appendChild(logoutLink);
                 }
             })
             .catch(error => {
@@ -168,6 +162,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        checkLoggedIn(); // Check login status when the page loads
+        checkLoggedIn();
     });
 

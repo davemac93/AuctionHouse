@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
     ownedCars: [{
         make: String,
         model: String,
-        // Add any additional fields you need for owned cars
     }]
 });
 

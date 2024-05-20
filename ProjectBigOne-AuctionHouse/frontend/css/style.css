@@ -30,7 +30,6 @@ header {
     padding: 0 2rem;
     background-color: black;
     background: grey;
-
 }
 
 footer {
@@ -162,7 +161,7 @@ section{
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 1rem;
-    background: black;
+    background: #212122;
     /* background: linear-gradient(245.59deg, grey 10%, black 60%, grey 800%); */
 
 }
@@ -1419,6 +1418,30 @@ section{
     position: absolute;
     right: 120px; 
     top: 120px;
+}
+
+.error {
+    height: 100vh;
+    text-align: center;
+    margin-top: 10%;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.addBody {
+    text-align: center;
+    height: 100vh;
+}
+
+.addBody p{
+    font-size: 20px;
+}
+
+.bet_invalid {
+    color: red;
+    font-weight: 400;
+    font-size: 17px;
+    display: none;
 }
 
 @media(max-width: 992px){
