@@ -21,13 +21,6 @@ const initSlider = () => {
     const slideButtons = document.querySelectorAll('.slider_wrapper .arrows');
 
 
-    const handelResize = () => {
-        maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
-    };
-
-    window.addEventListener('resize', handelResize);
-
-
     slideButtons.forEach(button => {
         button.addEventListener("click", () => {
             const direction = button.id === "arrow_previous" ? -1 : 1;
@@ -38,7 +31,6 @@ const initSlider = () => {
 
     const handelSlideButtons = () => {
         slideButtons[0].style.display = imageList.scrollLeft <= 0 ? 'none' : 'block';
-        slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? 'none' : 'block';
     }
 
 
@@ -64,8 +56,5 @@ document.getElementById('scrollDownButtonMain').addEventListener('click', functi
     });
 });
 
-document.getElementById('moveToLogin').addEventListener('click', function() {
-    window.location.href = '/reg-log';
-});
 
 

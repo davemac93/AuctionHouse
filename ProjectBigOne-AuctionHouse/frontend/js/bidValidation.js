@@ -2,11 +2,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const bidForm = document.getElementById('bidForm');
     const bidErrorElement = document.querySelector('.bet_invalid');
 
-    bidForm.addEventListener('submit', function (event) {
-        if (!validateBid()) {
-            event.preventDefault();
-        }
-    });
+    if (bidForm) {
+        bidForm.addEventListener('submit', function (event) {
+            if (!validateBid()) {
+                event.preventDefault();
+            }
+        });
+    }
 
     function validateBid() {
         const bidAmountInput = document.getElementById('bidAmountInput');
