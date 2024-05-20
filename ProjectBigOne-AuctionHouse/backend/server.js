@@ -18,9 +18,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
     credentials: true
   }
 });
@@ -82,7 +81,7 @@ const checkLoggedIn = (req, res, next) => {
 
 app.use(checkLoggedIn);
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
   console.log('A user connected');
   
   // Handle bid updates
