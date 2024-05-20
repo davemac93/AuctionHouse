@@ -16,13 +16,7 @@ const Blog = require('./models/blogs');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-    credentials: true
-  }
-});
+const io = socketIo(server);
 const saltRounds = 10;
 const dbURL = 'mongodb+srv://dawidmac:BxsbFg0hl0WO3a5O@auctionhouse-dev-v1.1ggmddb.mongodb.net/';
 
@@ -81,7 +75,7 @@ const checkLoggedIn = (req, res, next) => {
 
 app.use(checkLoggedIn);
 
-io.on('connection', async (socket) => {
+io.on('connection', (socket) => {
   console.log('A user connected');
   
   // Handle bid updates
