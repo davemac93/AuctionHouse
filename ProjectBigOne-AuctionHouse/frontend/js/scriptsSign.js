@@ -151,9 +151,6 @@
                     profileLink.innerHTML = '<a href="/profile" class="mainbar"><i class="fa-solid fa-user"></i></a>';
                     const logoutLink = document.createElement('li');
                     logoutLink.innerHTML = '<a href="/logout" class="mainbar">Logout</a>';
-                    const links = document.querySelector('.links');
-                    links.appendChild(profileLink); 
-                    links.appendChild(logoutLink);
                 }
             })
             .catch(error => {
