@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const socket = io('ws://localhost:3000');
+    const socket = io('https://auctionhouse-olvi.onrender.com');
 
     const updateRemainingTime = async () => {
         const remainingTimeElement = document.getElementById('remainingTime');
